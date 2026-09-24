@@ -1,388 +1,956 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alagar-Portfolio</title>
-    <link rel="icon" href="images/a.jpg" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Alagarsamy R | Senior .NET Developer</title>
+    <meta name="description" content="Alagarsamy R, Senior .NET Developer in Coimbatore with 10 years of experience building web, WPF desktop and REST API applications, including video management systems for law enforcement.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23512BD4'/><circle cx='50' cy='50' r='14' fill='%23E5484D'/></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #16202E;
+            --muted: #586476;
+            --paper: #F3F5F8;
+            --surface: #FFFFFF;
+            --line: #DCE1E8;
+            --net: #512BD4;
+            --net-soft: #ECE7FC;
+            --rec: #E5484D;
+            --console: #101A2B;
+            --console-line: #2A3850;
+            --console-text: #C9D3E3;
+            --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+            --body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+            --wrap: 1120px;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top,0px);
+            padding-bottom: env(safe-area-inset-bottom,0px);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --ink: #E6EBF2;
+                --muted: #9AA6B8;
+                --paper: #0E1522;
+                --surface: #152032;
+                --line: #26334A;
+                --net: #9C83F5;
+                --net-soft: #221B45;
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --ink: #E6EBF2;
+            --muted: #9AA6B8;
+            --paper: #0E1522;
+            --surface: #152032;
+            --line: #26334A;
+            --net: #9C83F5;
+            --net-soft: #221B45;
+        }
+
+        *, *::before, *::after {
+            box-sizing: inherit;
+            margin: 0
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(72px + env(safe-area-inset-top,0px))
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto
+            }
+        }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--body);
+            font-size: 1.0625rem;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased
+        }
+
+        img {
+            max-width: 100%
+        }
+
+        a {
+            color: inherit
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--net);
+            outline-offset: 3px;
+            border-radius: 4px
+        }
+
+        .wrap {
+            width: min(100% - 2.5rem, var(--wrap));
+            margin-inline: auto
+        }
+
+        h1, h2, h3 {
+            font-family: var(--display);
+            line-height: 1.1;
+            letter-spacing: -0.01em
+        }
+
+        h2 {
+            font-size: clamp(1.9rem,4vw,2.6rem);
+            font-weight: 800;
+            margin-bottom: .4rem
+        }
+
+        .lede {
+            color: var(--muted);
+            max-width: 60ch;
+            margin-bottom: 2.5rem
+        }
+
+        section {
+            padding: clamp(4rem,9vw,6.5rem) 0
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: env(safe-area-inset-top,0px);
+            z-index: 20;
+            background: color-mix(in srgb,var(--paper) 88%,transparent);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line)
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px
+        }
+
+        .brand {
+            font-family: var(--display);
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: .55rem
+        }
+
+            .brand .dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: var(--net);
+                box-shadow: 0 0 0 4px var(--net-soft)
+            }
+
+        .links {
+            display: flex;
+            gap: 1.6rem;
+            list-style: none;
+            padding: 0
+        }
+
+            .links a {
+                text-decoration: none;
+                font-weight: 500;
+                color: var(--muted);
+                padding: .4rem 0
+            }
+
+                .links a:hover {
+                    color: var(--ink)
+                }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: .45rem .6rem;
+            color: var(--ink);
+            cursor: pointer
+        }
+
+            .menu-btn svg {
+                display: block
+            }
+
+        @media (max-width:760px) {
+            .menu-btn {
+                display: block
+            }
+
+            .links {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 64px;
+                flex-direction: column;
+                gap: 0;
+                background: var(--surface);
+                border-bottom: 1px solid var(--line);
+                padding: .5rem 1.25rem 1rem;
+                display: none
+            }
+
+                .links.open {
+                    display: flex
+                }
+
+                .links a {
+                    display: block;
+                    padding: .75rem 0;
+                    border-bottom: 1px solid var(--line)
+                }
+
+                .links li:last-child a {
+                    border-bottom: 0
+                }
+        }
+
+        /* Hero */
+        .hero {
+            padding: clamp(3rem,7vw,5.5rem) 0 clamp(3.5rem,8vw,6rem)
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: clamp(2rem,5vw,4rem);
+            align-items: center
+        }
+
+        .hello {
+            font-weight: 600;
+            color: var(--net);
+            margin-bottom: .8rem
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem,5.2vw,3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem
+        }
+
+        .role {
+            font-family: var(--display);
+            font-weight: 500;
+            font-size: clamp(1.15rem,2.4vw,1.45rem);
+            color: var(--muted);
+            margin-bottom: 1.4rem
+        }
+
+        .hero p.intro {
+            max-width: 52ch;
+            margin-bottom: 2rem
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .8rem
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .8rem 1.3rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1.5px solid var(--net);
+            transition: background .2s,color .2s
+        }
+
+            .btn.primary {
+                background: var(--net);
+                color: #fff
+            }
+
+                .btn.primary:hover {
+                    background: color-mix(in srgb,var(--net) 85%,#000)
+                }
+
+            .btn.ghost {
+                color: var(--net)
+            }
+
+                .btn.ghost:hover {
+                    background: var(--net-soft)
+                }
+
+        /* Viewfinder: the one memorable element */
+        .feed {
+            position: relative;
+            background: var(--console);
+            color: var(--console-text);
+            border-radius: 18px;
+            padding: 1.4rem;
+            aspect-ratio: 4/3.2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            background-image: linear-gradient(var(--console-line) 1px,transparent 1px),linear-gradient(90deg,var(--console-line) 1px,transparent 1px);
+            background-size: 100% 25%,20% 100%;
+            background-position: 0 0
+        }
+
+            .feed::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(ellipse at 50% 55%,rgba(81,43,212,.35),transparent 65%);
+                pointer-events: none
+            }
+
+        .corner {
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            border-color: #fff;
+            border-style: solid;
+            opacity: .85
+        }
+
+        .c1 {
+            top: 14px;
+            left: 14px;
+            border-width: 2px 0 0 2px
+        }
+
+        .c2 {
+            top: 14px;
+            right: 14px;
+            border-width: 2px 2px 0 0
+        }
+
+        .c3 {
+            bottom: 14px;
+            left: 14px;
+            border-width: 0 0 2px 2px
+        }
+
+        .c4 {
+            bottom: 14px;
+            right: 14px;
+            border-width: 0 2px 2px 0
+        }
+
+        .feed-top, .feed-bottom {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0 .6rem;
+            font-size: .85rem
+        }
+
+        .rec {
+            display: flex;
+            align-items: center;
+            gap: .45rem;
+            font-weight: 600;
+            color: #fff
+        }
+
+            .rec i {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: var(--rec);
+                animation: blink 1.4s steps(2,start) infinite
+            }
+
+        @keyframes blink {
+            to {
+                visibility: hidden
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .rec i {
+                animation: none
+            }
+        }
+
+        .feed-center {
+            position: relative;
+            text-align: center
+        }
+
+            .feed-center small {
+                display: block;
+                color: var(--console-text);
+                opacity: .8;
+                margin-bottom: .35rem
+            }
+
+        .timecode {
+            font-family: var(--display);
+            font-weight: 700;
+            color: #fff;
+            font-size: clamp(1.7rem,4.2vw,2.5rem);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: .01em
+        }
+
+        .feed-bottom span {
+            opacity: .8
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: clamp(2rem,5vw,4rem);
+            align-items: start
+        }
+
+            .about-grid p + p {
+                margin-top: 1rem
+            }
+
+        .facts {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: .4rem 1.4rem
+        }
+
+            .facts div {
+                display: flex;
+                justify-content: space-between;
+                gap: 1rem;
+                padding: .95rem 0;
+                border-bottom: 1px solid var(--line)
+            }
+
+                .facts div:last-child {
+                    border-bottom: 0
+                }
+
+            .facts dt {
+                color: var(--muted)
+            }
+
+            .facts dd {
+                font-weight: 600;
+                text-align: right
+            }
+
+        /* Skills */
+        #skills {
+            background: var(--surface);
+            border-block: 1px solid var(--line)
+        }
+
+        .skill-groups {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(min(100%,300px),1fr));
+            gap: 2rem 2.5rem
+        }
+
+            .skill-groups h3 {
+                font-size: 1.1rem;
+                font-weight: 700;
+                margin-bottom: .8rem
+            }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .45rem;
+            list-style: none;
+            padding: 0
+        }
+
+            .tags li {
+                font-size: .9rem;
+                padding: .3rem .7rem;
+                border-radius: 999px;
+                background: var(--net-soft);
+                color: var(--ink)
+            }
+
+        /* Experience timeline (real sequence) */
+        .timeline {
+            list-style: none;
+            padding: 0;
+            position: relative
+        }
+
+            .timeline::before {
+                content: "";
+                position: absolute;
+                left: 7px;
+                top: .6rem;
+                bottom: .6rem;
+                width: 2px;
+                background: var(--line)
+            }
+
+        .job {
+            position: relative;
+            padding-left: 2.4rem;
+            padding-bottom: 2.6rem
+        }
+
+            .job:last-child {
+                padding-bottom: 0
+            }
+
+            .job::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: .45rem;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background: var(--paper);
+                border: 3px solid var(--net)
+            }
+
+            .job.current::before {
+                background: var(--net)
+            }
+
+        .job-head {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: .3rem 1rem;
+            align-items: baseline
+        }
+
+        .job h3 {
+            font-size: 1.35rem;
+            font-weight: 700
+        }
+
+        .when {
+            color: var(--muted);
+            font-weight: 500;
+            white-space: nowrap
+        }
+
+        .company {
+            color: var(--net);
+            font-weight: 600;
+            margin: .2rem 0 .7rem
+        }
+
+        .job p {
+            max-width: 70ch
+        }
+
+        /* Projects */
+        .featured {
+            display: grid;
+            gap: 1.25rem;
+            margin-bottom: 3rem
+        }
+
+        .proj {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: clamp(1.3rem,3vw,2rem)
+        }
+
+            .proj.lead {
+                border-left: 5px solid var(--net)
+            }
+
+            .proj h3 {
+                font-size: 1.4rem;
+                font-weight: 700;
+                margin-bottom: .25rem
+            }
+
+            .proj .stack {
+                color: var(--muted);
+                font-size: .93rem;
+                margin-bottom: 1rem
+            }
+
+            .proj ul {
+                padding-left: 1.2rem;
+                display: grid;
+                gap: .45rem;
+                max-width: 75ch
+            }
+
+        .proj-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem
+        }
+
+        .earlier h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem
+        }
+
+        .earlier-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(min(100%,320px),1fr));
+            gap: 0 2.5rem;
+            list-style: none;
+            padding: 0
+        }
+
+            .earlier-list li {
+                padding: 1rem 0;
+                border-top: 1px solid var(--line)
+            }
+
+            .earlier-list strong {
+                display: block;
+                font-weight: 600
+            }
+
+            .earlier-list span {
+                color: var(--muted);
+                font-size: .93rem
+            }
+
+        /* Education */
+        .edu {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem
+        }
+
+            .edu div {
+                border-top: 3px solid var(--net);
+                padding-top: 1rem
+            }
+
+            .edu h3 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                margin-bottom: .3rem
+            }
+
+            .edu p {
+                color: var(--muted)
+            }
+
+        /* Contact */
+        #contact {
+            background: var(--console);
+            color: #fff
+        }
+
+            #contact .lede {
+                color: var(--console-text)
+            }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(min(100%,240px),1fr));
+            gap: 1rem
+        }
+
+        .contact-card {
+            display: block;
+            text-decoration: none;
+            border: 1px solid var(--console-line);
+            border-radius: 14px;
+            padding: 1.3rem;
+            transition: border-color .2s,background .2s
+        }
+
+        a.contact-card:hover {
+            border-color: #9C83F5;
+            background: rgba(156,131,245,.08)
+        }
+
+        .contact-card small {
+            display: block;
+            color: var(--console-text);
+            margin-bottom: .3rem
+        }
+
+        .contact-card strong {
+            font-size: 1.1rem;
+            font-weight: 600;
+            word-break: break-word
+        }
+
+        footer {
+            background: var(--console);
+            color: var(--console-text);
+            border-top: 1px solid var(--console-line);
+            padding: 1.5rem 0;
+            font-size: .9rem
+        }
+
+        @media (max-width:900px) {
+            .hero-grid, .about-grid {
+                grid-template-columns: 1fr
+            }
+
+            .feed {
+                max-width: 520px
+            }
+        }
+
+        @media (max-width:640px) {
+            .proj-pair, .edu {
+                grid-template-columns: 1fr
+            }
+
+            .feed {
+                aspect-ratio: auto;
+                min-height: 260px;
+                gap: 2.5rem
+            }
+
+            .feed-bottom span:last-child {
+                display: none
+            }
+        }
+    </style>
 </head>
+<body>
 
-<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
-    <nav id="navbar" class="navbar navbar-expand-lg bg-white sticky-top pt-3 pe-lg-5 pb-3 ps-lg-5 shadow-sm">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <h3 class="fw-bolder">Alagarsamy Rajendran</h3>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span><img src="images/ham-menu.svg" /></span>
+    <header>
+        <nav class="wrap nav" aria-label="Main">
+            <a class="brand" href="#home"><span class="dot" aria-hidden="true"></span>Alagarsamy R</a>
+            <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
             </button>
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
-                aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header pb-0">
-                    <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <ul class="links" id="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="wrap hero-grid">
+                <div>
+                    <p class="hello">Hi, I'm Alagarsamy</p>
+                    <h1>I build .NET systems that run on desktops, browsers and the field.</h1>
+                    <p class="role">Senior .NET Developer in Coimbatore, India</p>
+                    <p class="intro">For the last 10 years I've designed and shipped web apps, WPF desktop software and REST APIs with C#, ASP.NET Core and SQL. Today I work on video management software used by police and sheriff departments in the US and Korea.</p>
+                    <div class="actions">
+                        <a class="btn primary" href="mailto:alagarbcs@gmail.com">Email me</a>
+                        <a class="btn ghost" href="#projects">See my work</a>
+                    </div>
                 </div>
-                <div class="offcanvas-body d-flex">
-                    <ul
-                        class="navbar-nav justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-lg-end align-items-lg-end flex-grow-1 pe-3">
-                        <li class="nav-item" data-bs-dismiss="offcanvas">
-                            <a class="nav-link fw-bolder" href="#home">Home</a>
-                        </li>
-                        <li class="nav-item" data-bs-dismiss="offcanvas">
-                            <a class="nav-link fw-bolder" href="#aboutme">About</a>
-                        </li>
-                        <li class="nav-item" data-bs-dismiss="offcanvas">
-                            <a class="nav-link fw-bolder" href="#projects">Projects</a>
-                        </li>
-                        <li class="nav-item" data-bs-dismiss="offcanvas">
-                            <a class="nav-link fw-bolder" href="#contact">Contact</a>
-                        </li>
+
+                <div class="feed" role="img" aria-label="Camera viewfinder showing time since my career started in September 2016">
+                    <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+                    <div class="feed-top">
+                        <span class="rec"><i aria-hidden="true"></i>REC</span>
+                        <span>CAM 01 / Coimbatore</span>
+                    </div>
+                    <div class="feed-center">
+                        <small>Building software since Sep 2016</small>
+                        <div class="timecode" id="timecode">10y 000d 00:00:00</div>
+                    </div>
+                    <div class="feed-bottom">
+                        <span>C# / .NET / SQL</span>
+                        <span>Live</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="wrap about-grid">
+                <div>
+                    <h2>About me</h2>
+                    <p>I'm a senior software developer who enjoys the full journey of a feature: designing the database, writing the stored procedures and APIs, and building the screens people actually use. Most of my work is in C#, ASP.NET Core MVC, .NET Web API, WPF (MVVM), Dapper, SQL Server and PostgreSQL.</p>
+                    <p>My recent work covers multi-device camera integration, RTSP live streaming, recording and playback, and evidence management. I also build the business side of things: dynamic role and permission systems, localisation, inventory, quotations and purchasing, with business logic shared across desktop and web so both behave the same way.</p>
+                </div>
+                <dl class="facts">
+                    <div><dt>Experience</dt><dd>10 years</dd></div>
+                    <div><dt>Current role</dt><dd>Senior Consultant</dd></div>
+                    <div><dt>Focus</dt><dd>Web, desktop and APIs</dd></div>
+                    <div><dt>Based in</dt><dd>Coimbatore, Tamil Nadu</dd></div>
+                    <div><dt>Education</dt><dd>MCA</dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="wrap">
+                <h2>Skills</h2>
+                <p class="lede">The tools I use day to day, grouped by where they sit in the stack.</p>
+                <div class="skill-groups">
+                    <div><h3>Languages</h3><ul class="tags"><li>C#</li><li>JavaScript</li><li>TypeScript</li><li>SQL</li><li>HTML5</li><li>CSS3</li><li>VB.NET</li></ul></div>
+                    <div><h3>Backend and frameworks</h3><ul class="tags"><li>ASP.NET Core MVC</li><li>.NET Web API</li><li>WPF (MVVM)</li><li>ADO.NET</li><li>Dapper</li><li>Entity Framework</li><li>WCF</li></ul></div>
+                    <div><h3>Frontend</h3><ul class="tags"><li>Razor Views</li><li>Bootstrap</li><li>jQuery</li><li>Angular</li><li>Kendo UI (Telerik)</li><li>Responsive UI</li></ul></div>
+                    <div><h3>Databases</h3><ul class="tags"><li>SQL Server</li><li>PostgreSQL</li><li>MySQL</li><li>SQLite</li><li>Stored procedures</li><li>Schema design</li><li>Query optimisation</li><li>Migrations</li></ul></div>
+                    <div><h3>Video and devices</h3><ul class="tags"><li>RTSP streaming</li><li>LibVLCSharp / VLC</li><li>Recording and playback</li><li>Multi-camera management</li><li>Evidence storage</li></ul></div>
+                    <div><h3>Security and cloud</h3><ul class="tags"><li>Token-based auth</li><li>Role and permission access control</li><li>AWS S3</li><li>Unit testing</li></ul></div>
+                    <div><h3>Tools and practice</h3><ul class="tags"><li>Git</li><li>GitHub</li><li>Gitea</li><li>Visual Studio</li><li>Postman</li><li>iText7</li><li>Crystal Reports</li><li>Agile / Scrum</li><li>Code review</li></ul></div>
+                    <div><h3>AI-assisted development</h3><ul class="tags"><li>Claude</li><li>Claude Code</li><li>Claude Cowork</li><li>Codex</li></ul></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="wrap">
+                <h2>Experience</h2>
+                <p class="lede">Three roles, one steady thread: Microsoft stack, real business problems.</p>
+                <ol class="timeline">
+                    <li class="job current">
+                        <div class="job-head"><h3>Senior Consultant</h3><span class="when">Feb 2023 to present</span></div>
+                        <p class="company">Sabareeza Technologies (Aegent Technologies), Coimbatore</p>
+                        <p>Building the Aegent video management system for desktop and web, its REST APIs, and the Aegent Blueprint business platform. Work spans live camera streaming, evidence workflows, permissions, localisation, inventory and quotations.</p>
+                    </li>
+                    <li class="job">
+                        <div class="job-head"><h3>Consultant</h3><span class="when">Feb 2018 to Feb 2023</span></div>
+                        <p class="company">Sabareeza Technologies (Triton Management Group), Coimbatore</p>
+                        <p>Developed an alert tracking system, pawn and loan web applications, a customer portal, and device, messaging and URL-shortening libraries using ASP.NET MVC, .NET Core, WCF and SQL Server.</p>
+                    </li>
+                    <li class="job">
+                        <div class="job-head"><h3>Software Developer</h3><span class="when">Sep 2016 to Dec 2017</span></div>
+                        <p class="company">Avelator Solutions India Pvt. Ltd., Coimbatore</p>
+                        <p>Built a centre management application and enhanced a travel management system using ASP.NET, Entity Framework, Kendo UI and Crystal Reports.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="projects" style="padding-top:0">
+            <div class="wrap">
+                <h2>Projects</h2>
+                <p class="lede">Recent work first, followed by the projects that got me here.</p>
+
+                <div class="featured">
+                    <article class="proj lead">
+                        <h3>Aegent VMS for Windows desktop</h3>
+                        <p class="stack">C#, WPF (MVVM), SQL Server, PostgreSQL, Dapper</p>
+                        <ul>
+                            <li>Video management system used by sheriff and police departments in the US and Korea to manage body-worn and portable cameras, including NEXX360, FITT360, P3000 and BOLD P3000A.</li>
+                            <li>Multi-device camera management with RTSP live streaming, recording and playback, and evidence storage and retrieval for interrogation and investigation work.</li>
+                            <li>Replaced static role setup with dynamic roles and permissions driven by stored procedures.</li>
+                            <li>Built a central caption and localisation framework so no screen has hardcoded text.</li>
+                        </ul>
+                    </article>
+
+                    <div class="proj-pair">
+                        <article class="proj">
+                            <h3>Aegent VMS web app and REST API</h3>
+                            <p class="stack">ASP.NET Core, .NET Web API, Dapper, SQL Server, PostgreSQL</p>
+                            <ul>
+                                <li>Moved desktop screens and workflows to the web after a gap analysis between both versions.</li>
+                                <li>Designed and documented Customer and Contact REST APIs used by web and desktop clients.</li>
+                                <li>Shared stored-procedure logic across both clients for consistent behaviour.</li>
+                                <li>Responsive screens with Razor Views, Bootstrap and jQuery.</li>
+                            </ul>
+                        </article>
+                        <article class="proj">
+                            <h3>Aegent Blueprint business platform</h3>
+                            <p class="stack">ASP.NET Core MVC, Dapper, SQL Server, PostgreSQL, Bootstrap, iText7</p>
+                            <ul>
+                                <li>Inventory with company-level stock filtering and a full quotation lifecycle.</li>
+                                <li>Purchasing and receiving with CSV import, serial-number enforcement and NSN item support.</li>
+                                <li>Work orders, dynamic permissions, and PDF invoices and documents generated with iText7.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="earlier">
+                    <h3>Earlier projects</h3>
+                    <ul class="earlier-list">
+                        <li><strong>Alert Tracking System</strong><span>Exception types, templates, recipients, alerts and dashboards. ASP.NET Core MVC, Web API, Dapper.</span></li>
+                        <li><strong>E-Commerce Pawn Web Application</strong><span>Collateral-based loan management and customer records. ASP.NET, VB.NET, WCF, ADO.NET.</span></li>
+                        <li><strong>Customer Portal</strong><span>Customers view loans, collateral, rebates and payment history. ASP.NET MVC 4, VB.NET, WCF.</span></li>
+                        <li><strong>Online Loan Application</strong><span>Apply for loans and verify documents online. ASP.NET MVC 4, C#, WCF, Angular.</span></li>
+                        <li><strong>Device Control, Communication Library and Short URL</strong><span>Device integration, email and SMS, mailbox processing and REST URL shortening. C#, MVC.</span></li>
+                        <li><strong>QIIQ Human Development Center</strong><span>Master, pre-sale, point of sale, attendance and inventory modules with Crystal Reports ledgers and invoices.</span></li>
+                        <li><strong>Tours and Travels Management System</strong><span>Accounts, inbound, outbound, stock, payments and reports. ASP.NET, Entity Framework, Kendo UI.</span></li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </nav>
-    <section id="home" class="bg-body-tertiary">
-        <div class="container-lg container-fluid mt-5 mb-2">
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
-                    <div class="col-md-12">
-                        <h3 class="fw-bold mb-3 text-lg-start text-center">Wel<span
-                                class="text-info">come</span></h3>
-                        <p class="text-black-50 text-lg-start text-center" style="color:black !important;">
-                            My name is Alagarsamy, I'm a Sr Software Developer based in Coimbatore, India. 📍 A focused Web Developer building Websites and Web Applications that leads to the success of overall product.
-                       
-                        </p>
-                        <div class="mb-3 text-lg-start text-center">
-                            <i class="fab fa-2x fa-linkedin"></i> <i class="fab fa-2x fa-github ms-2"></i>
-                        </div>
-                        <div class="row text-start mt-5 mb-5">
-                            <div class="col-12 col-sm-12 col-md-12 text-center fs-5 mb-5 underlineskills">
-                                My Skills
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">ASP. Net</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">MVC</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">JavaScript</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">Angular</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">.NET Core</span>
-                            </div>
+        </section>
 
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">.NET Technology</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">C#</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">VB.Net</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">ADO.NET</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">WCF</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">WEB API</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">MS-SQL Server</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">Crystal Report</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">AJAX</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">JQ Grid</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">DataTables</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">DevOps</span>
-                            </div>
-                            <div class="col-6 col-sm-4 col-md-3 mb-4 text-lg-start text-center">
-                                <span class="bg-secondary-subtle rounded-start rounded-end p-2">GitHub</span>
-                            </div>
-                        </div>
-
-                    </div>
+        <section id="education" style="padding-top:0">
+            <div class="wrap">
+                <h2>Education</h2>
+                <p class="lede">Computer science foundations from Coimbatore and Karur.</p>
+                <div class="edu">
+                    <div><h3>MCA</h3><p>Nehru Institute of Engineering and Technology, Coimbatore. 7.53 CGPA, June 2015.</p></div>
+                    <div><h3>B.Sc. Computer Science</h3><p>Valluvar College of Science and Management, Karur. 77.32%, June 2012.</p></div>
                 </div>
-                <div class="col-md-1"></div>
-
             </div>
-        </div>
-    </section>
-    <section id="aboutme" class="bg-white">
-        <div class="container-lg">
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-10 mb-2">
-                    <h3 class="fw-bold mb-3 text-lg-start text-center">
-                        About<span class="text-info">Me</span>
-                    </h3>
-                    <img class="img-fluid rounded-start-4 rounded-end-4 w-100" src="images/aboutme.png" />
+        </section>
+
+        <section id="contact">
+            <div class="wrap">
+                <h2>Let's talk</h2>
+                <p class="lede">Open to senior .NET roles and interesting projects. Email is the quickest way to reach me.</p>
+                <div class="contact-grid">
+                    <a class="contact-card" href="mailto:alagarbcs@gmail.com"><small>Email</small><strong>alagarbcs@gmail.com</strong></a>
+                    <a class="contact-card" href="https://github.com/alagarsamyrajendran" target="_blank" rel="noopener"><small>GitHub</small><strong>alagarsamyrajendran</strong></a>
+                    <div class="contact-card"><small>Location</small><strong>Coimbatore, Tamil Nadu, India</strong></div>
                 </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-1"></div>
-                <div class="col-xl-10 mt-0 mt-lg-3">
-
-                    <ul style="list-style: circle;">
-                        <li>
-                            8+ Years of experience as a Software Developer in software design, analysis, development, testing and
-                            implementation of web and client server applications and web API’s using Microsoft Technologies.
-                        </li>
-                        <li>
-                            Hands on in application development of Web Forms in ASP.NET using VB.NET and C#, ADO.NET
-                            and Dapper as the Database data consumer.
-                        </li>
-                        <li>
-                            Extensive experience in design and development of applications using .NET and Web Technologies
-                            like Html5, CSS 3 or more, Bootstrap, jQuery
-                        </li>
-                        <li>
-                            Extensive experience on ASP.NET MVC and .Net Core with EDM (Entity Data Model), WCF, SQL
-                            SERVER.
-                        </li>
-                        <li>Experience on source code maintains in DevOps and TortoiseSVN.</li>
-                        <li>Experience in Server Management using Microsoft Remote connection tool.</li>
-                    </ul>
-
-                </div>
-                <div class="col-xl-1"></div>
-                <div class="col-md-1"></div>
-                <div class="col-xl-10 mt-0 mt-lg-3">
-                    <h3 class=" fw-bold mb-3 text-lg-start text-center">
-                        Work
-                        <span class="text-info">Experience</span>
-                    </h3>
-                    <ul style="list-style: circle;">
-                        <li>
-                            Working as a Senior Software Developer in Sabareeza Technologies, Coimbatore From February
-                            2018 to Present.
-                        </li>
-                        <li>
-                            Working as a Software Developer in Avelator Solutions India Pvt Ltd, Coimbatore From
-                            September 2015 to December 2017
-                        </li>
-                    </ul>
-
-                </div>
-                <div class="col-xl-1"></div>
-                <div class="col-md-1"></div>
-                <div class="col-xl-10 mt-0 mt-lg-3">
-                    <h3 class=" fw-bold mb-3 text-lg-start text-center">
-                        Academic
-                        <span class="text-info">Profile</span>
-                    </h3>
-                    <ul style="list-style: circle;">
-                        <li>
-                            MCA from Nehru Institute Of Engineering And Technology, Coimbatore with 7.53 CGPA – June
-                            2015
-                        </li>
-                        <li>
-                            B.Sc.(CS) from Valluvar College of Science & Management, Karur with 77.32 % - June 2012
-
-                        </li>
-                    </ul>
-
-                </div>
-                <div class="col-xl-1"></div>
             </div>
-        </div>
-    </section>
-    <section id="projects" class="bg-body-tertiary">
-        <div class="container-lg">
-            <div class="row">
-                <div class="col-xl-1"></div>
-                <div class="col-xl-10">
-                    <h3 class=" fw-bold mb-3 text-lg-start text-center">
-                        My<span class="text-info">Projects</span>
-                    </h3>
-                    <h5 class="fw-bold mb-4 text-center">Each project is a unique piece of development</h5>
-                    <div class="card shadow-sm rounded-4 pt-2 pb-2">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-xl-7 mb-3">
-                                    <img class="img-fluid img-thumbnail rounded-4 shadow-sm" src="images/Roulette.png" />
-                                </div>
-                                <div class="col-xl-5">
-                                    <h5 class="fw-bold mb-4 text-center text-lg-start">
-                                        E-Commerce Pawn Web Application 🛒
-                                    </h5>
-                                    <p class="text-black-50 mb-5">
-                                        The Application system is mainly designed to provide collateral based secure loans to
-                                        people’s and maintaining their details to do business with secure way
-                                    </p>
-                                    <h4 class="fw-bold mb-4 text-center text-lg-start">
-                                        Environment
-                                    </h4>
-                                    <span class="badge bg-secondary-subtle text-black p-2">ASP.NET</span>
-                                    <span class="badge bg-secondary-subtle text-black p-2">VB.NET</span>
-                                    <span class="badge bg-secondary-subtle text-black p-2">SQL Server</span>
-                                    <span class="badge bg-secondary-subtle text-black p-2">WCF</span>
-                                    <span class="badge bg-secondary-subtle text-black p-2">Web Service</span>
-                                    <span class="badge bg-secondary-subtle text-black p-2" style="margin-top:5px;">ADO.NET</span>
-                                    <div class="d-flex flex-row justify-content-evenly" style="margin-top:45px;">
-                                        <button class="btn btn-sm btn-dark" onclick="openAgencyCode()" disabled>
-                                            Code
-                                            <i class="fab fa-github"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-outline-dark" onclick="openAgencyLink()" disabled>
-                                            Live Demo
-                                            <i class="fas fa-link"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-1"></div>
-                <div class="col-xl-1"></div>
-                <div class="col-xl-10 pt-5 pb-5">
-                    <div class="card shadow-sm rounded-4 pt-2 pb-2">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-xl-5">
-                                    <h5 class="fw-bold mb-4 text-center text-lg-start">
-                                        Customer Portal Web Application (For Pawn business)
-                                        🛒
-                                    </h5>
-                                    <p class="text-black-50 mb-5">
-                                        The Application is mainly used to enables businesses by sharing account-specific information
-                                        with customers such as loan details, collateral information’s, available rebates, payment histories, etc.
-                                    </p>
-                                    <h4 class="fw-bold mb-4 text-center text-lg-start">
-                                        Environment
-                                    </h4>
-                                    <span class="badge bg-secondary-subtle text-black p-2">ASP.NET</span>
-                                    <span class="badge bg-secondary-subtle text-black p-2">MVC 4</span>
-                                    <span class="badge bg-secondary-subtle text-black p-2">VB.NET</span>
-                                    <span class="badge bg-secondary-subtle text-black p-2">WCF</span>
-                                    <span class="badge bg-secondary-subtle text-black p-2">SQL Server</span>
-                                    <div class="d-flex flex-row justify-content-evenly mb-3 mb-lg-0" style="margin-top:45px;">
-                                        <button class="btn btn-sm btn-dark" onclick="openFFCode()" disabled>
-                                            Code
-                                            <i class="fab fa-github"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-outline-dark" onclick="openFFLink()" disabled>
-                                            Live Demo
-                                            <i class="fas fa-link"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="col-xl-7 mb-3">
-                                    <img class="img-fluid img-thumbnail rounded-4 shadow-sm" src="images/cp.png" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-1"></div>
+        </section>
+    </main>
 
-                <div class="col-xl-1"></div>
-                <div class="col-xl-10 pb-5">
-                    <div class="card shadow-sm rounded-4 pt-2 pb-2">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-xl-7 mb-3">
-                                    <img class="img-fluid img-thumbnail rounded-4 shadow-sm" src="images/OA.png" />
-                                </div>
-                                <div class="col-xl-5">
-                                    <h5 class="fw-bold mb-4 text-center text-lg-start">
-                                        Online Loan Application (For Pawn business)🛒
-                                    </h5>
-                                    <p class="text-black-50 mb-5">
-                                        The main objective of this project is to establish an online loan application where peoplecan
-                                        apply for a loan and get their document verification done through online.
-                                    </p>
-                                    <div class="d-flex flex-row justify-content-evenly" style="margin-top:45px;">
-                                        <button class="btn btn-sm btn-dark" onclick="openNexxCode()" disabled>Code
-                                            <i class="fab fa-github"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-outline-dark" onclick="openNexxLink()" disabled>Live Demo
-                                            <i class="fas fa-link"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-1"></div>
-            </div>
-        </div>
-    </section>
-    <section id="contact" class="bg-white">
-        <div class="container-lg w-75">
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-10 text-lg-start text-sm-center text-center">
-                    <h5 class="fw-semibold fs-6 mb-2">CONTACT <span class="text-info">ME</span></h5>
-                    <h5 class="fw-bold mb-5">Hit me up! Contact through 👇</h5>
-                    <div class="d-lg-flex gap-3 mt-5">
-                        <div class="text-danger"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="mb-4 mb-sm-4 mb-lg-0">
-                            <h3 class="fs-4">Location</h3>
-                            <p>Coimbatore, India</p>
-                        </div>
-                        <div><i class="fas fa-envelope"></i></div>
-                        <div>
-                            <h3 class="fs-4">Mail</h3>
-                            <p>alagarbcs@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-        </div>
-    </section>
-    <section id="footer" class="bg-black">
-        <div class="container-lg w-75">
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-8 col-12 text-center text-lg-start">
-                    <h5 class="text-white fw-bold">Copyright © 2023. All rights are reserved</h5>
-                </div>
-                <div class="col-md-2 col-12 text-white social-icons text-center text-lg-start">
-                    <i class="fab fa-2x fa-linkedin me-4"></i>
-                    <i class="fab fa-2x fa-github"></i>
-                </div>
-                <div class="col-md-1"></div>
-            </div>
-        </div>
-    </section>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="main.js"></script>
+    <footer>
+        <div class="wrap">© <span id="year">2026</span> Alagarsamy R</div>
+    </footer>
+
     <script>
+        // Mobile menu
+        const btn = document.querySelector('.menu-btn');
+        const links = document.getElementById('nav-links');
+        btn.addEventListener('click', () => {
+            const open = links.classList.toggle('open');
+            btn.setAttribute('aria-expanded', open);
+            btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+        links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            links.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+        }));
+
+        // Career timecode since Sep 1, 2016
+        const start = new Date(2016, 8, 1);
+        const tc = document.getElementById('timecode');
+        const pad = (n, l = 2) => String(n).padStart(l, '0');
+        function tick() {
+            const now = new Date();
+            let years = now.getFullYear() - start.getFullYear();
+            let anniv = new Date(start); anniv.setFullYear(start.getFullYear() + years);
+            if (anniv > now) { years--; anniv.setFullYear(anniv.getFullYear() - 1); }
+            let diff = Math.floor((now - anniv) / 1000);
+            const d = Math.floor(diff / 86400); diff %= 86400;
+            const h = Math.floor(diff / 3600); diff %= 3600;
+            const m = Math.floor(diff / 60); const s = diff % 60;
+            tc.textContent = `${years}y ${pad(d, 3)}d ${pad(h)}:${pad(m)}:${pad(s)}`;
+        }
+        tick(); setInterval(tick, 1000);
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
-
 </html>
